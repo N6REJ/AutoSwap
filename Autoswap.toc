@@ -1,0 +1,12 @@
+## Interface: 90100
+## Version: 0.1
+## Title: Auto Swap
+## Author: BearLeeAble - Dalaran
+## Notes: Automatically swaps equipset when entering a zone.
+## SavedVariables: AutoSwapDB
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+
+embeds.xml
+
+Core.lua
