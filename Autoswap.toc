@@ -1,11 +1,10 @@
 ## Interface: 90105
-## Version: 0.1
-## Title: Auto Swap
-## Author: @project-author@ - Dalaran
-## Notes: Automatically swaps equipset when entering a zone.
-## SavedVariables: AutoSwapDB
-## OptionalDeps: Ace3
-## X-Embeds: Ace3
+## Title: AutoSwap
+## Version: @project-version@
+## Author: Bearesquishy
+## X-License: MIT
+## X-Curse-Project-ID:
+## DefaultState: enabled
 
 embeds.xml
 core.lua
