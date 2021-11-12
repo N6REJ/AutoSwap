@@ -5,8 +5,19 @@
 -- Addon handler. https.//www.wowace.com/projects/ace3/pages/api/ace-addon-3-0
 -- Slash commands. https.//www.wowace.com/projects/ace3/pages/api/ace-console-3-0
 -- Event handler. https.//www.wowace.com/projects/ace3/pages/api/ace-event-3-0
+-- Options table. https://www.wowace.com/projects/ace3/pages/ace-config-3-0-options-tables
+--[[
+I'll only have 4 zones..
+Maw
+World
+Dungeons
+Torghast
+you select your gear from a dropdown that shows what equipsets you have created in character screen and thats it...
+no extra options ,no fancy build sets.
+--]]
 
-AutoSwap = LibStub("AceAddon-3.0"):NewAddon("AutoSwap", "AceConsole-3.0", "AceEvent-3.0")
+AutoSwap = LibStub("AceAddon-3.0"):NewAddon("AutoSwap", "AceConsole-3.0", "AceEvent-3.0", "AceGUI-3.0")
+AutoSwap.AceConfig = LibStub( "AceConfig-3.0")
 --[[
 Use https.//wowpedia.fandom.com/wiki/API_C_EquipmentSet.UseEquipmentSet
 to actually swap the gear out
@@ -17,10 +28,23 @@ local debug = true
 -- Called when the addon is loaded
 function AutoSwap:OnInitialize()
     -- do init tasks here, like loading the Saved Variables,
-    -- or setting up slash commands.
+    -- Create options
+    local AutoSwapOptions = {
+        type = "group",
+        args = {
+            enable = {
+                name = "Enable",
+                desc = "Enables / disables the addon",
+                type = "toggle",
+                set = function(info,val) AutoSwap.enabled = val end,
+                get = function(info) return AutoSwap.enabled end
+            },
+        },
+    }
 
-    -- Get gear info
-    AutoSwap:GetGear()
+
+    -- or setting up slash commands.
+    AutoSwap.AceConfig:RegisterOptionsTable("AutoSwap", AutoSwapOptions)
 end
 
 -- Called when the addon is enabled
@@ -115,5 +139,12 @@ function AutoSwap:GetGear()
             print("Gearset " .. setName .. " is equipped. " , isEquipped)
         end
     end
+
+end
+
+-- Populate options
+function AutoSwap:Options()
+    -- create options.
+    -- zoneName, dropdown populated with defined gear sets so they can select them from dropdown
 
 end
