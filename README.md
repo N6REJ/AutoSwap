@@ -1,4 +1,4 @@
-# Auto_Swap
+# AutoSwap
 Simple unobtrusive addon that will automatically switch gearset as you change zones.
 
 In profiles set each zone with its desired gearset name.
